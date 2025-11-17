@@ -365,6 +365,6 @@ MIT License (or specify your license)
 
 ## Acknowledgments
 
-- Open Registry Protocol (ORP) specification
+- ORP specification
 - Kerala coffee supply chain use case
 - FastAPI, SQLAlchemy, React communities
