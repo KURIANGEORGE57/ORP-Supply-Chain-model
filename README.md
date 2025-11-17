@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-A FastAPI + PostgreSQL backend implementing Open Registry Protocol (ORP) models with **Assertions**, **Evaluations**, and **Enactments**. Includes a Redis-backed worker that enforces deadline (Δ) TTL and performs enactments with timeouts, plus a React UI demo showing Kerala coffee flow.
+A FastAPI + PostgreSQL backend implementing ORP models with **Assertions**, **Evaluations**, and **Enactments**. Includes a Redis-backed worker that enforces deadline (Δ) TTL and performs enactments with timeouts, plus a React UI demo showing Kerala coffee flow.
 
 **Stack:** FastAPI, PostgreSQL, Redis, RQ (worker queue), React + Vite
 
