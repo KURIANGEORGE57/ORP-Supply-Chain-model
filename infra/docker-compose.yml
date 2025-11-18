@@ -34,12 +34,13 @@ services:
 
   worker:
     build: ../backend
-    command: python -m rq worker default
+    command: python -m rq worker default --with-scheduler
     volumes:
       - ../backend:/app
     environment:
       DATABASE_URL: postgresql://veritas:veritas_pass@postgres:5432/veritas
       REDIS_URL: redis://redis:6379/0
+      PYTHONPATH: /app
     depends_on:
       - backend
       - redis
@@ -52,7 +53,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      REACT_APP_API_URL: http://localhost:8000/api/v1
+      VITE_API_URL: http://localhost:8000/api/v1
 
 volumes:
   pgdata:

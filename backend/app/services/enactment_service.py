@@ -10,19 +10,19 @@ from ..utils.logging import logger
 
 class EnactmentService:
     @staticmethod
-    def enact_assertion(db: Session, enactment_id: str, actor_id: str = 'worker') -> dict:
+    def enact_assertion(db: Session, assertion_id: str, actor_id: str = 'worker') -> dict:
         """
         Perform enactment: compute digest and optionally anchor to blockchain.
         Business logic per spec section 6.4.
-        """
-        # 1. Get enactment record
-        enactment = crud.get_enactment_by_assertion(db, enactment_id)
-        if not enactment:
-            # Try getting by enactment ID directly
-            enactment = db.query(crud.Enactment).filter(crud.Enactment.id == enactment_id).first()
 
+        Args:
+            assertion_id: ID of the assertion to enact
+            actor_id: Actor performing the enactment (usually 'worker')
+        """
+        # 1. Get enactment record by assertion_id
+        enactment = crud.get_enactment_by_assertion(db, assertion_id)
         if not enactment:
-            raise HTTPException(status_code=404, detail="Enactment not found")
+            raise HTTPException(status_code=404, detail=f"Enactment not found for assertion {assertion_id}")
 
         # 2. Get assertion and evaluation
         assertion = crud.get_assertion(db, enactment.assertion_id)

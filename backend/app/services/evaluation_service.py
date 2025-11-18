@@ -107,13 +107,13 @@ class EvaluationService:
                 }
             })
 
-            # Enqueue enactment worker job
+            # Enqueue enactment worker job with assertion_id
             try:
                 job_queue.enqueue(
                     'app.workers.tasks.enactment_handler',
-                    enactment_id
+                    assertion_id
                 )
-                logger.info(f"Enqueued enactment job for {enactment_id}")
+                logger.info(f"Enqueued enactment job for assertion {assertion_id}, enactment {enactment_id}")
             except Exception as e:
                 logger.error(f"Failed to enqueue enactment job: {e}")
 

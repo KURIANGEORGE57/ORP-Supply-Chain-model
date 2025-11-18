@@ -160,8 +160,8 @@ def test_evaluation_verifies_and_enacts(db_session, test_data):
     enactment = crud.get_enactment_by_assertion(db_session, 'test-assertion-2')
     assert enactment is not None
 
-    # Simulate enactment worker
-    EnactmentService.enact_assertion(db_session, enactment.id, actor_id='worker')
+    # Simulate enactment worker (pass assertion_id, not enactment.id)
+    EnactmentService.enact_assertion(db_session, 'test-assertion-2', actor_id='worker')
 
     # Verify assertion status is now ENACTED
     db_session.expire_all()
